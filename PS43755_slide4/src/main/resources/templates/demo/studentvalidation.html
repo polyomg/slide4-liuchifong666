@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Page Title</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+<h2>Databinding + Validation</h2>
+<b th:text="${message}"></b>
+
+<form th:object="${student}" th:action="@{/student/savevalidation}" method="post">
+    ID (Email):
+    <input th:field="*{id}"> <span style="color:red" th:errors="*{id}"></span><br>
+
+    Fullname:
+    <input th:field="*{fullname}"> <span style="color:red" th:errors="*{fullname}"></span><br>
+
+    Gender:
+    <input th:field="*{gender}" type="radio" value="true">Male
+    <input th:field="*{gender}" type="radio" value="false">Female
+    <span style="color:red" th:errors="*{gender}"></span><br>
+
+    Birthday:
+    <input th:field="*{birthday}" type="date"> <span style="color:red" th:errors="*{birthday}"></span><br>
+
+    Photo:
+    <input th:field="*{photo}"> <span style="color:red" th:errors="*{photo}"></span><br>
+
+    Average Mark:
+    <input th:field="*{mark}" type="number" step="0.1"> <span style="color:red" th:errors="*{mark}"></span><br>
+
+    <hr>
+    <button type="submit">Save</button>
+</form>
+</body>
+</html>
